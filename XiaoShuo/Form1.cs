@@ -120,7 +120,7 @@ namespace XiaoShuo
             var len = arr.Count();
             for (var i = len - 1; i >= 0; i--)
             {
-                if (arr[i] !='0')
+                if (arr[i] != '0')
                 {
                     index = i;
                     break;
@@ -150,14 +150,103 @@ namespace XiaoShuo
             }
         }
 
-        private class Area 
+        private class Area
         {
             public string Code { get; set; }
 
             public string Name { get; set; }
+
+            public string Url { get; set; }
             public IList<Area> Childs { get; set; }
         }
 
-     
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var time = this.textBox1.Text;
+            var host = "http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/" + time + "/";
+
+            var txt = Net.GetRequest(host, null, Encoding.GetEncoding("gb2312"));
+            if (!string.IsNullOrEmpty(txt))
+            {
+                var ms = Regex.Matches(txt, @"<a\s+href='(?<url>\w+)\.html'>(?<name>\w+)<");
+                var list = new List<Area>();
+                foreach (Match item in ms)
+                {
+                    list.Add(new Area()
+                    {
+                        Code = item.Groups["url"].Value,
+                        Name = item.Groups["name"].Value
+                    });
+                }
+                list.AsParallel().ForAll((c) =>
+                {
+                    InitUrlChild(host, c.Code + ".html", c);
+                });
+
+                var str = JsonConvert.SerializeObject(list);
+                using (var sw = new StreamWriter(@"d:\\alljson.txt", true, Encoding.GetEncoding("gb2312")))
+                {
+                    sw.Write(str);
+                }
+                MessageBox.Show("Ok");
+
+            }
+        }
+
+        private void InitUrlChild(string host, string url, Area top)
+        {
+            var rUrl = host + url;
+            var arr = rUrl.ToArray();
+            var index = 0;
+            for (var i = arr.Length - 1; i >= 0; i--)
+            {
+                if (arr[i] == '/')
+                {
+                    index = i;
+                    break;
+                }
+            }
+            host = rUrl.Substring(0, index + 1);
+            var txt = Net.GetRequest(rUrl, null, Encoding.GetEncoding("gb2312"), 10000);
+            if (!string.IsNullOrEmpty(txt))
+            {
+                var ms = Regex.Matches(txt, @"<a\s+href='(?<url>[\d\/]+\.html)'>(?<code>\d+)</.*?href.*?>(?<name>\w+)<");
+                var list = new List<Area>();
+                if (ms.Count > 0)
+                {
+                    foreach (Match item in ms)
+                    {
+                        var r = new Area()
+                        {
+                            Code = item.Groups["code"].Value,
+                            Name = item.Groups["name"].Value,
+                            Url = item.Groups["url"].Value
+                        };
+                        list.Add(r);
+                    }
+
+                    list.AsParallel().ForAll((c) => {
+                        InitUrlChild(host, c.Url, c);
+                    });
+
+                }
+                else
+                {
+                    ms = Regex.Matches(txt, @"<tr.*?class='villagetr.*?>(?<code>\d+)<.*?<td>\d+</td><td>(?<name>\w+)<");
+
+                    foreach (Match item in ms)
+                    {
+                        var r = new Area()
+                        {
+                            Code = item.Groups["code"].Value,
+                            Name = item.Groups["name"].Value
+                        };
+                        list.Add(r);
+                    }
+                }
+
+                top.Childs = list;
+            }
+        }
     }
 }
