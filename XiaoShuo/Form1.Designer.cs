@@ -35,20 +35,20 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtRoot = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtRootRegex = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtHost = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtContentRegex = new System.Windows.Forms.TextBox();
-            this.chHost = new System.Windows.Forms.CheckBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.button4 = new System.Windows.Forms.Button();
+            this.chHost = new System.Windows.Forms.CheckBox();
+            this.txtContentRegex = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtHost = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtRootRegex = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtRoot = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,88 +126,33 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "小说采集";
             // 
-            // label2
+            // button5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "目录地址";
+            this.button5.Location = new System.Drawing.Point(316, 204);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "抓取";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // txtRoot
+            // textBox2
             // 
-            this.txtRoot.Location = new System.Drawing.Point(103, 30);
-            this.txtRoot.Name = "txtRoot";
-            this.txtRoot.Size = new System.Drawing.Size(233, 21);
-            this.txtRoot.TabIndex = 1;
+            this.textBox2.Location = new System.Drawing.Point(16, 206);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(286, 21);
+            this.textBox2.TabIndex = 5;
             // 
-            // label3
+            // radioButton2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "目录正则";
-            // 
-            // txtRootRegex
-            // 
-            this.txtRootRegex.Location = new System.Drawing.Point(103, 57);
-            this.txtRootRegex.Name = "txtRootRegex";
-            this.txtRootRegex.Size = new System.Drawing.Size(233, 21);
-            this.txtRootRegex.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "内容根目";
-            // 
-            // txtHost
-            // 
-            this.txtHost.Location = new System.Drawing.Point(103, 84);
-            this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(233, 21);
-            this.txtHost.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 124);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "内容正则";
-            // 
-            // txtContentRegex
-            // 
-            this.txtContentRegex.Location = new System.Drawing.Point(103, 118);
-            this.txtContentRegex.Name = "txtContentRegex";
-            this.txtContentRegex.Size = new System.Drawing.Size(233, 21);
-            this.txtContentRegex.TabIndex = 1;
-            // 
-            // chHost
-            // 
-            this.chHost.AutoSize = true;
-            this.chHost.Location = new System.Drawing.Point(352, 91);
-            this.chHost.Name = "chHost";
-            this.chHost.Size = new System.Drawing.Size(15, 14);
-            this.chHost.TabIndex = 2;
-            this.chHost.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(210, 165);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "开始";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(117, 168);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(53, 16);
+            this.radioButton2.TabIndex = 4;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "UTF-8";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
@@ -221,33 +166,88 @@
             this.radioButton1.Text = "GB2312";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // button4
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(117, 168);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(53, 16);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "UTF-8";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.button4.Location = new System.Drawing.Point(246, 168);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "开始";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox2
+            // chHost
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 206);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(286, 21);
-            this.textBox2.TabIndex = 5;
+            this.chHost.AutoSize = true;
+            this.chHost.Location = new System.Drawing.Point(352, 91);
+            this.chHost.Name = "chHost";
+            this.chHost.Size = new System.Drawing.Size(15, 14);
+            this.chHost.TabIndex = 2;
+            this.chHost.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // txtContentRegex
             // 
-            this.button5.Location = new System.Drawing.Point(316, 204);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "抓取";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.txtContentRegex.Location = new System.Drawing.Point(103, 118);
+            this.txtContentRegex.Name = "txtContentRegex";
+            this.txtContentRegex.Size = new System.Drawing.Size(233, 21);
+            this.txtContentRegex.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(32, 124);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "内容正则";
+            // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(103, 84);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(233, 21);
+            this.txtHost.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(32, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "内容根目";
+            // 
+            // txtRootRegex
+            // 
+            this.txtRootRegex.Location = new System.Drawing.Point(103, 57);
+            this.txtRootRegex.Name = "txtRootRegex";
+            this.txtRootRegex.Size = new System.Drawing.Size(233, 21);
+            this.txtRootRegex.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "目录正则";
+            // 
+            // txtRoot
+            // 
+            this.txtRoot.Location = new System.Drawing.Point(103, 30);
+            this.txtRoot.Name = "txtRoot";
+            this.txtRoot.Size = new System.Drawing.Size(233, 21);
+            this.txtRoot.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "目录地址";
             // 
             // Form1
             // 
