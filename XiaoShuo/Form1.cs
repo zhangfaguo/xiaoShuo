@@ -225,7 +225,8 @@ namespace XiaoShuo
                         list.Add(r);
                     }
 
-                    list.AsParallel().ForAll((c) => {
+                    list.AsParallel().ForAll((c) =>
+                    {
                         InitUrlChild(host, c.Url, c);
                     });
 
@@ -246,6 +247,83 @@ namespace XiaoShuo
                 }
 
                 top.Childs = list;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var rootUrl = txtRoot.Text.Trim();
+            var rootRegex = txtRootRegex.Text.Trim();
+            var host = txtHost.Text.Trim();
+            var isHost = chHost.Checked;
+            var contentRegex = txtContentRegex.Text.Trim();
+
+            var encoding = Encoding.GetEncoding("gb2312");
+            if (!this.radioButton1.Checked)
+                encoding = Encoding.UTF8;
+            var timeout = 100000;
+            this.button4.Enabled = false;
+            Task.Factory.StartNew(() =>
+            {
+                var rootContent = Net.GetRequest(rootUrl, null, encoding, timeout);
+                using (var sw = new StreamWriter(@"d:\a.txt", false, encoding))
+                {
+                    if (!string.IsNullOrEmpty(rootContent))
+                    {
+                        var urlList = Regex.Matches(rootContent, rootRegex);
+                        if (urlList.Count > 0)
+                        {
+                            foreach (Match m in urlList)
+                            {
+                                var url = m.Groups["url"].Value;
+                                var title = m.Groups["title"].Value;
+                                sw.WriteLine(title);
+                                if (isHost)
+                                    url = host + url;
+                                var content = Net.GetRequest(url, null, encoding, timeout);
+                                if (!string.IsNullOrEmpty(content))
+                                {
+                                    var txtMatch = Regex.Match(content, contentRegex);
+                                    if (txtMatch.Success)
+                                    {
+                                        var txt = txtMatch.Groups["txt"].Value;
+                                        txt = txt.Replace("&nbsp;", "");
+                                        txt = Regex.Replace(txt, @"<([^>]*)>", new MatchEvaluator((mt) =>
+                                        {
+                                            return "";
+                                        }));
+                                        sw.WriteLine(txt);
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
+                }
+                this.Invoke((Action)(() =>
+                    {
+                        MessageBox.Show("Ok");
+                        button4.Enabled = true;
+                    }));
+
+            });
+
+        }
+
+
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var encoding = Encoding.GetEncoding("gb2312");
+            if (!this.radioButton1.Checked)
+                encoding = Encoding.UTF8;
+            var url = textBox2.Text;
+            if (!string.IsNullOrEmpty(url))
+            {
+                var content = Net.GetRequest(url, null, encoding);
+                Clipboard.SetText(content);
+                MessageBox.Show("Ok");
             }
         }
     }
